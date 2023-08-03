@@ -28,7 +28,7 @@ def user_input_features():
             'Occupation': job}
     features = pd.DataFrame(data, index=[0])
     features['Education'] = features['Education'].map({'Iliterate' : 0, 'Primary' : 1, 'Secondary' : 2, 'Tertiary' : 3, 'Unknown' : 4})
-    features_encoded = pd.get_dummies(features, columns=['Occupation'], , prefix='Occupation')  #Use one-hot encoding on 'Occupation' column
+    features_encoded = pd.get_dummies(features, columns=['Occupation'], prefix='Occupation')  #Use one-hot encoding on 'Occupation' column
     missing_cols = set(['Occupation_' + str(i) for i in range(10)]) - set(features_encoded.columns)
     for col in missing_cols:
         features_encoded[col] = 0
